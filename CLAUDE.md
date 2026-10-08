@@ -26,3 +26,6 @@ Metricool blogId = 7300323, timezone = Asia/Jerusalem. פייסבוק + אינס
 4. לעדכן posts/INDEX.md (תאריך, נושא, כותרת, מזהה פוסט Metricool).
 5. לבדוק עם getScheduledPosts שכל הפרסומים נקלטו.
 מורן יכול למחוק/לערוך כל פרסום ב-Metricool לפני העלייה.
+
+## חשוב
+בכל תזמון: draft=false ו-autoPublish=true. אחרי התזמון להריץ getScheduledPosts ולוודא שאף פרסום לא מסומן draft:true (פרסום כזה לא יעלה). אם יש, לתקן עם updateScheduledPost.
