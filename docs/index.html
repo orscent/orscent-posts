@@ -9,6 +9,7 @@
 <style>
 :root{--pink:#fb619f;--plum:#2a0c33;--plum2:#5a1c63;--grey:#8b97ab;--ink:#2b2b35;--bg:#fff7fa}
 *{box-sizing:border-box}
+html,body{overflow-x:hidden}
 body{margin:0;font-family:"Noto Sans Hebrew","Heebo",Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
 .wrap{max-width:720px;margin:0 auto;padding:0 20px}
 header{background:radial-gradient(ellipse at 75% 20%,var(--plum2) 0,var(--plum) 60%,#14061a 100%);color:#fff;padding:28px 0 56px;text-align:center}
@@ -28,13 +29,13 @@ h2{font-size:30px;margin:0 0 20px;color:var(--plum);text-align:center}
 ul.ticks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 ul.ticks li{background:#fff;border-radius:14px;padding:14px 18px 14px 14px;padding-right:56px;position:relative;box-shadow:0 4px 12px rgba(42,12,51,.05)}
 ul.ticks li:before{content:"✓";position:absolute;right:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--pink);color:#fff;text-align:center;line-height:28px;font-weight:700}
-form{background:#fff;border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(42,12,51,.1)}
+form{position:relative;background:#fff;border-radius:22px;padding:24px;box-shadow:0 10px 30px rgba(42,12,51,.1)}
 label{display:block;font-weight:700;margin:14px 0 6px}
 input,select,textarea{width:100%;font:inherit;padding:13px 14px;border:2px solid #eadbe2;border-radius:12px;background:#fff}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--pink)}
 textarea{min-height:90px;resize:vertical}
 form .btn{width:100%;margin-top:20px}
-.hp{position:absolute;left:-9999px;opacity:0;height:0}
+.hp{position:absolute;left:0;top:0;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .ok,.err{display:none;border-radius:14px;padding:16px;margin-top:16px;font-weight:700;text-align:center}
 .ok{background:#e6f7ee;color:#14633b}.err{background:#fde8ec;color:#a31232}
 footer{background:var(--plum);color:#f1dff3;text-align:center;padding:30px 0;font-size:16px}
