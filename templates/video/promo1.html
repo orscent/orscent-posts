@@ -74,22 +74,16 @@ const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
 const io=(t,a,b,f=.45)=>Math.min(ease((t-a)/f),1-ease((t-(b-f))/f));// fade in at a, out by b
 const $=id=>document.getElementById(id);
 function show(id,t,a,b,dy=60,f=.5){const e=$(id),v=io(t,a,b,f);e.style.opacity=v;e.style.transform=`translateY(${(1-ease((t-a)/f))*dy}px)`;}
+const dev=new Image();dev.src='../../assets/devices/cut-white-ribbed.png';
 function diffuser(t,x,y,sc,alpha){
-  cx.save();cx.globalAlpha=alpha;cx.translate(x,y);cx.scale(sc,sc);
-  // glow
-  let g=cx.createRadialGradient(0,40,10,0,40,260);g.addColorStop(0,'rgba(251,97,159,.28)');g.addColorStop(1,'rgba(251,97,159,0)');
-  cx.fillStyle=g;cx.fillRect(-300,-260,600,600);
-  // body
-  g=cx.createLinearGradient(-90,0,90,0);g.addColorStop(0,'#6b4a40');g.addColorStop(.35,'#e8b9a2');g.addColorStop(.55,'#f6d6c4');g.addColorStop(1,'#5a3c34');
-  cx.fillStyle=g;cx.beginPath();cx.moveTo(-80,-60);cx.lineTo(80,-60);cx.lineTo(95,230);cx.quadraticCurveTo(0,250,-95,230);cx.closePath();cx.fill();
-  // top cap
-  g=cx.createLinearGradient(-60,0,60,0);g.addColorStop(0,'#2b2020');g.addColorStop(.5,'#5e4842');g.addColorStop(1,'#2b2020');
-  cx.fillStyle=g;cx.beginPath();cx.ellipse(0,-60,80,18,0,0,6.28);cx.fill();
-  cx.fillStyle='#120d0e';cx.beginPath();cx.ellipse(0,-62,14,5,0,0,6.28);cx.fill();
-  // led ring
-  cx.strokeStyle=`rgba(251,97,159,${.6+.3*Math.sin(t*4)})`;cx.lineWidth=4;cx.beginPath();cx.ellipse(0,200,88,14,0,0,3.14);cx.stroke();
-  // label
-  cx.fillStyle='rgba(30,20,20,.55)';cx.font='300 26px Heebo';cx.textAlign='center';cx.direction='ltr';cx.fillText('Or Scent',0,90);
+  cx.save();cx.globalAlpha=alpha;
+  let g=cx.createRadialGradient(x,y+200,20,x,y+200,420);g.addColorStop(0,'rgba(251,97,159,.30)');g.addColorStop(1,'rgba(251,97,159,0)');
+  cx.fillStyle=g;cx.fillRect(x-450,y-250,900,900);
+  const w=560,h=w*dev.height/dev.width;
+  // soft floor shadow
+  g=cx.createRadialGradient(x,y-120+h,10,x,y-120+h,w*.6);g.addColorStop(0,'rgba(0,0,0,.55)');g.addColorStop(1,'rgba(0,0,0,0)');
+  cx.fillStyle=g;cx.fillRect(x-w,y-120+h-60,2*w,120);
+  cx.drawImage(dev,x-w/2,y-150,w,h);
   cx.restore();
 }
 function drawMist(t,x,y,sc,alpha){
@@ -110,7 +104,7 @@ window.render=function(t){
   show('a1',t,0.2,3.6);show('a2',t,0.55,3.6);show('a3',t,0.9,3.6,80);show('a4',t,1.6,3.6,30);
   // scene 2: 3.6-7.6 diffuser + mist
   const d2=io(t,3.5,7.7,.6);
-  if(d2>0){const rise=(1-ease((t-3.5)/.9))*300;drawMist(t,540,1180+rise,1.5,d2);diffuser(t,540,1180+rise,1.5,d2);}
+  if(d2>0){const rise=(1-ease((t-3.5)/.9))*300;drawMist(t,690,1100+rise,1.0,d2);diffuser(t,540,1180+rise,1.5,d2);}
   show('b1',t,3.8,7.6);show('b2',t,4.15,7.6);show('b3',t,4.8,7.6,30);
   // scene 3: 7.6-11.2
   show('c0',t,7.7,11.2);show('c1',t,8.2,11.2,0);show('c2',t,8.7,11.2,0);show('c3',t,9.2,11.2,0);
