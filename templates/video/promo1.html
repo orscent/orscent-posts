@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&display=block" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0d0b0c}
+#c{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Heebo,sans-serif;color:#fff;
+  background:radial-gradient(ellipse 120% 70% at 50% 35%,#2a2224 0%,#151112 55%,#080607 100%)}
+canvas{position:absolute;inset:0}
+.layer{position:absolute;inset:0}
+.brand{position:absolute;top:110px;width:100%;text-align:center;font-size:46px;font-weight:300;letter-spacing:10px;color:#e8c4b0;direction:ltr}
+.brand b{font-weight:700;color:#fb619f}
+.tag{position:absolute;top:172px;width:100%;text-align:center;font-size:30px;font-weight:300;color:#c9a99a;letter-spacing:3px}
+.line{position:absolute;width:100%;text-align:center;font-weight:900;line-height:1.05}
+.pink{color:#fb619f;text-shadow:0 0 40px rgba(251,97,159,.45)}
+.white{color:#fff}
+.sub{font-weight:300;color:#e8d6cf}
+.ben{position:absolute;right:150px;left:150px;height:130px;display:flex;align-items:center;gap:36px;font-size:64px;font-weight:700}
+.ico{flex:0 0 104px;height:104px;border-radius:50%;border:4px solid #e2a98f;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle,#3a2a28,#1a1314);box-shadow:0 0 30px rgba(226,169,143,.35)}
+.ico svg{width:56px;height:56px}
+.logo{position:absolute;left:50%;top:560px;width:520px;height:520px;margin-left:-260px;border-radius:50%;
+  background:url(../OrScent_icon.png) center/cover;box-shadow:0 0 120px rgba(251,97,159,.55)}
+.pill{position:absolute;left:110px;right:110px;top:1440px;height:170px;border-radius:100px;background:#fb619f;
+  display:flex;align-items:center;justify-content:center;font-size:96px;font-weight:900;direction:ltr;letter-spacing:3px;
+  box-shadow:0 20px 70px rgba(251,97,159,.55)}
+.pillcap{position:absolute;top:1360px;width:100%;text-align:center;font-size:44px;font-weight:400;color:#f3dcd3}
+.frame{position:absolute;inset:40px;border:2px solid rgba(226,169,143,.35);border-radius:28px}
+</style></head>
+<body><div id="c">
+<canvas id="cv" width="1080" height="1920"></canvas>
+<div class="frame"></div>
+<div class="brand">Or <b>Scent</b></div>
+<div class="tag">ניחוחות של טוב</div>
+
+<!-- scene 1 -->
+<div class="layer" id="s1">
+  <div class="line white" id="a1" style="top:620px;font-size:120px">מה הדבר הראשון</div>
+  <div class="line white" id="a2" style="top:770px;font-size:120px">שמרגישים</div>
+  <div class="line pink"  id="a3" style="top:920px;font-size:150px">כשנכנסים?</div>
+  <div class="line sub"   id="a4" style="top:1150px;font-size:56px">לא רואים אותו. אבל זוכרים אותו.</div>
+</div>
+
+<!-- scene 2 -->
+<div class="layer" id="s2">
+  <div class="line pink" id="b1" style="top:330px;font-size:132px">ריח נעים,</div>
+  <div class="line white" id="b2" style="top:480px;font-size:132px">כל יום.</div>
+  <div class="line sub" id="b3" style="top:1560px;font-size:54px">לובי · משרד · קליניקה · חנות</div>
+</div>
+
+<!-- scene 3 -->
+<div class="layer" id="s3">
+  <div class="line white" id="c0" style="top:420px;font-size:96px">אנחנו דואגים <span class="pink">להכל</span></div>
+  <div class="ben" id="c1" style="top:720px"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e2a98f" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div>התקנה מקצועית</div>
+  <div class="ben" id="c2" style="top:900px"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e2a98f" stroke-width="2" stroke-linecap="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></svg></div>מילוי שמן כל חודש</div>
+  <div class="ben" id="c3" style="top:1080px"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#e2a98f" stroke-width="2.4" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>בלי להתעסק בכלום</div>
+</div>
+
+<!-- scene 4 -->
+<div class="layer" id="s4">
+  <div class="logo" id="d1"></div>
+  <div class="line white" id="d2" style="top:1150px;font-size:80px">מפיצי ריח במנוי חודשי</div>
+  <div class="pillcap" id="d3">לעסקים ולוועדי בתים · לפרטים</div>
+  <div class="pill" id="d4">050-5500632</div>
+</div>
+</div>
+<script>
+const W=1080,H=1920,cv=document.getElementById('cv'),cx=cv.getContext('2d');
+// deterministic PRNG
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646};
+const bokeh=[...Array(46)].map(()=>({x:rnd()*W,y:rnd()*H,r:8+rnd()*42,s:10+rnd()*30,p:rnd()*6.28,a:.05+rnd()*.18,pink:rnd()<.35}));
+const mist=[...Array(70)].map(()=>({o:rnd(),dx:(rnd()-.5)*260,r:40+rnd()*90,w:rnd()*6.28}));
+const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
+const io=(t,a,b,f=.45)=>Math.min(ease((t-a)/f),1-ease((t-(b-f))/f));// fade in at a, out by b
+const $=id=>document.getElementById(id);
+function show(id,t,a,b,dy=60,f=.5){const e=$(id),v=io(t,a,b,f);e.style.opacity=v;e.style.transform=`translateY(${(1-ease((t-a)/f))*dy}px)`;}
+function diffuser(t,x,y,sc,alpha){
+  cx.save();cx.globalAlpha=alpha;cx.translate(x,y);cx.scale(sc,sc);
+  // glow
+  let g=cx.createRadialGradient(0,40,10,0,40,260);g.addColorStop(0,'rgba(251,97,159,.28)');g.addColorStop(1,'rgba(251,97,159,0)');
+  cx.fillStyle=g;cx.fillRect(-300,-260,600,600);
+  // body
+  g=cx.createLinearGradient(-90,0,90,0);g.addColorStop(0,'#6b4a40');g.addColorStop(.35,'#e8b9a2');g.addColorStop(.55,'#f6d6c4');g.addColorStop(1,'#5a3c34');
+  cx.fillStyle=g;cx.beginPath();cx.moveTo(-80,-60);cx.lineTo(80,-60);cx.lineTo(95,230);cx.quadraticCurveTo(0,250,-95,230);cx.closePath();cx.fill();
+  // top cap
+  g=cx.createLinearGradient(-60,0,60,0);g.addColorStop(0,'#2b2020');g.addColorStop(.5,'#5e4842');g.addColorStop(1,'#2b2020');
+  cx.fillStyle=g;cx.beginPath();cx.ellipse(0,-60,80,18,0,0,6.28);cx.fill();
+  cx.fillStyle='#120d0e';cx.beginPath();cx.ellipse(0,-62,14,5,0,0,6.28);cx.fill();
+  // led ring
+  cx.strokeStyle=`rgba(251,97,159,${.6+.3*Math.sin(t*4)})`;cx.lineWidth=4;cx.beginPath();cx.ellipse(0,200,88,14,0,0,3.14);cx.stroke();
+  // label
+  cx.fillStyle='rgba(30,20,20,.55)';cx.font='300 26px Heebo';cx.textAlign='center';cx.direction='ltr';cx.fillText('Or Scent',0,90);
+  cx.restore();
+}
+function drawMist(t,x,y,sc,alpha){
+  cx.save();cx.globalCompositeOperation='screen';
+  for(const m of mist){const life=((t*.35+m.o)%1);const yy=y-62*sc-life*400*sc;const xx=x+Math.sin(life*5+m.w)*40*sc+m.dx*life*sc;
+    const r=m.r*sc*(.4+life*1.6);const a=alpha*.10*Math.sin(life*3.14);
+    const g=cx.createRadialGradient(xx,yy,0,xx,yy,r);g.addColorStop(0,`rgba(245,232,236,${a})`);g.addColorStop(1,'rgba(245,232,236,0)');
+    cx.fillStyle=g;cx.fillRect(xx-r,yy-r,2*r,2*r);}
+  cx.restore();
+}
+window.render=function(t){
+  cx.clearRect(0,0,W,H);
+  // bokeh drift
+  for(const b of bokeh){const y=(b.y-t*b.s+H)%H, x=b.x+Math.sin(t*.6+b.p)*20;
+    const g=cx.createRadialGradient(x,y,0,x,y,b.r);const c=b.pink?'251,97,159':'226,169,143';
+    g.addColorStop(0,`rgba(${c},${b.a})`);g.addColorStop(1,`rgba(${c},0)`);cx.fillStyle=g;cx.beginPath();cx.arc(x,y,b.r,0,6.28);cx.fill();}
+  // scene 1: 0-3.6
+  show('a1',t,0.2,3.6);show('a2',t,0.55,3.6);show('a3',t,0.9,3.6,80);show('a4',t,1.6,3.6,30);
+  // scene 2: 3.6-7.6 diffuser + mist
+  const d2=io(t,3.5,7.7,.6);
+  if(d2>0){const rise=(1-ease((t-3.5)/.9))*300;drawMist(t,540,1180+rise,1.5,d2);diffuser(t,540,1180+rise,1.5,d2);}
+  show('b1',t,3.8,7.6);show('b2',t,4.15,7.6);show('b3',t,4.8,7.6,30);
+  // scene 3: 7.6-11.2
+  show('c0',t,7.7,11.2);show('c1',t,8.2,11.2,0);show('c2',t,8.7,11.2,0);show('c3',t,9.2,11.2,0);
+  for(const [id,a] of [['c1',8.2],['c2',8.7],['c3',9.2]]){$(id).style.transform=`translateX(${-(1-ease((t-a)/.5))*120}px)`;}
+  // scene 4: 11.2-15
+  const l=io(t,11.2,99,.7);const s=.75+.25*ease((t-11.2)/.9)+0.02*Math.sin(t*3);
+  $('d1').style.opacity=l;$('d1').style.transform=`scale(${s})`;
+  show('d2',t,11.8,99);show('d3',t,12.3,99,30);show('d4',t,12.5,99,80);
+  const pulse=t>13.2?1+0.035*Math.sin((t-13.2)*6):1;$('d4').style.transform+=` scale(${pulse})`;
+  // global fade in/out
+  document.getElementById('c').style.opacity=Math.min(ease(t/.4),1-ease((t-14.6)/.4));
+};
+window.render(0);
+</script></body></html>
